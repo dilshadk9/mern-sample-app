@@ -11,8 +11,8 @@ npm install
 npm start
 
 ### Start Node application
-cd backend (change the directory)
-npm start
+* cd backend (change the directory)
+* npm start
 
 ### Open browser and navigate to below link
 http://localhost:3000/
