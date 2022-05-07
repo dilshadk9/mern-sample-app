@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const bcrypt = require("bcrypt");
 
 var userService = {};
 
@@ -10,13 +11,16 @@ userService.getUsers = (req, res, next) => {
 };
 
 userService.saveUser = (req, res, next) => {
+  console.log(req.body);
+  let hashPass = bcrypt.hashSync(req.body.input.password, 10);
+
   let user = new User({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    gender: req.body.gender,
-    dateOfBirth: req.body.dateOfBirth,
-    password: req.body.password,
+    firstName: req.body.input.firstName,
+    lastName: req.body.input.lastName,
+    email: req.body.input.email,
+    gender: req.body.input.gender,
+    dateOfBirth: req.body.input.dateOfBirth,
+    password: hashPass,
   });
 
   user.save(function (err) {
